@@ -16,6 +16,11 @@ export default function Navbar({ className, ...props }: React.HTMLAttributes<HTM
           Dashboard
         </Link>
       )}
+      {user && user != "loading" && (
+        <Link href="/my-orgs" className="text-sm font-medium transition-colors hover:text-primary">
+          My organizations
+        </Link>
+      )}
     </nav>
   );
 }

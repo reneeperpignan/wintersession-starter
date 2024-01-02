@@ -9,9 +9,10 @@ export async function signInWithGoogle() {
 
   try {
     const result = await signInWithPopup(auth, provider);
-
+    console.log(result);
     // If new user, add new entry to the profiles table
     const additionalInfo = getAdditionalUserInfo(result);
+    console.log(additionalInfo);
     if (additionalInfo?.isNewUser) {
       await addNewProfile({
         user_id: result.user.uid,

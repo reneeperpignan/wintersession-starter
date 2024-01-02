@@ -3,7 +3,6 @@ import { TypographyH2, TypographyP } from "@/components/ui/typography";
 import { redirect } from "next/navigation";
 import { useAuthContext } from "../(context)/auth-context";
 import AddOrgDialog from "../orgs/add-org-dialog";
-import Page from "../orgs/page";
 
 export default function Dashboard() {
   const { user } = useAuthContext();
@@ -24,7 +23,6 @@ export default function Dashboard() {
       {user.email && <TypographyP>{`Your email is ${user.email}`}</TypographyP>}
 
       <AddOrgDialog />
-      <Page />
     </>
   );
 }
