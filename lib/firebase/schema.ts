@@ -6,14 +6,17 @@ export interface Profile {
   biography: string;
 }
 
-export interface Clubs {
+export interface Orgs {
   id: string;
   owner: string;
   name: string;
   description: string;
-  member_count: number;
+  member_count: number; //maybe
   // likes: number;
   members: string[]; // Every string must be a user id in profiles
+  type: string; // pre-professional, journalism, etc
+  comptype: string; // three options: no comp, competitive comp, completion-based comp
+  meetingdaytime: string; //should I separate these?
 }
 
 //list all mebers in the club
