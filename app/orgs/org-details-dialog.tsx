@@ -22,7 +22,7 @@ export default function OrgDetailsDialog({ id, organization, userId, onClose }) 
   const router = useRouter();
 
   const handleDelete = async (id, e) => {
-    e.stopPropagation();
+    e.preventDefault();
     const decRef = doc(db, "organizations", id);
     await deleteDoc(decRef);
 

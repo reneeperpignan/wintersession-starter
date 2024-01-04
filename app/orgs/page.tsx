@@ -1,6 +1,6 @@
 "use client";
 import { db } from "@/lib/firebase/firestore";
-import { type Clubs } from "@/lib/firebase/schema";
+import { type Orgs } from "@/lib/firebase/schema";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import OrgCard from "./org-card";
@@ -47,7 +47,7 @@ export default function Page() {
 
   return (
     <div className="flex h-screen w-screen flex-wrap items-center justify-center">
-      {orgData.map((organization: Clubs) => (
+      {orgData.map((organization: Orgs) => (
         <div>
           <OrgCard key={organization.id} id={organization.id} organization={organization} />
         </div>
