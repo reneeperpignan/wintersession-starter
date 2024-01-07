@@ -49,7 +49,7 @@ export default function MyOrgs(userid: UserInfo) {
     <div>
       <div> {userid.username && <TypographyP>{`Name: ${userid.username}`}</TypographyP>}</div>
       <div>{user.email && <TypographyP>{`Email: ${user.email}`}</TypographyP>}</div>
-      <div className="flex h-screen w-screen flex-wrap items-center justify-center">
+      <div className="flex w-screen flex-wrap items-center justify-center">
         {orgData.map((organization: Orgs) => (
           <div key={organization.id}>
             <OrgCardMyOrgs organization={organization} user={userid} />

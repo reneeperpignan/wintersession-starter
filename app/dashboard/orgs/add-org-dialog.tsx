@@ -17,6 +17,16 @@ import { db } from "@/lib/firebase/firestore";
 import { addDoc, collection } from "firebase/firestore";
 import { useState, type SyntheticEvent } from "react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 async function addDatatoFirestore(
   name: string,
   description: string,
@@ -45,13 +55,16 @@ async function addDatatoFirestore(
 }
 
 export default function AddOrgDialog() {
+  //dropdown
+  const [position, setPosition] = useState("bottom");
+
   const { toast } = useToast();
 
   // State variables to store form input values
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [members, setMembers] = useState<string[]>([]);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("Type");
   const [comptype, setComptype] = useState("");
   const [meetingday, setMeetingday] = useState("");
   const [meetingtime, setMeetingtime] = useState("");
@@ -59,6 +72,15 @@ export default function AddOrgDialog() {
   //Handler fxn
   const addOrgHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
+
+    if (name == "") {
+      toast({
+        title: "Bruh.",
+        description: `You must have a name. `,
+      });
+      return;
+    }
+
     const added = await addDatatoFirestore(name, description, members, type, comptype, meetingday, meetingtime);
     if (added) {
       setName("");
@@ -74,6 +96,23 @@ export default function AddOrgDialog() {
         description: `${name} was added.`,
       });
     }
+  };
+
+  const handleReset = (e: SyntheticEvent) => {
+    e.preventDefault();
+    console.log("clear");
+
+    setName("");
+    setDescription("");
+    setMembers([]);
+    setType("");
+    setComptype("");
+    setMeetingday("");
+    setMeetingtime("");
+
+    toast({
+      title: "Data reset",
+    });
   };
 
   return (
@@ -119,48 +158,102 @@ export default function AddOrgDialog() {
 
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="type" className="text-right">
-                Type of Org
+                Type
               </Label>
-              <Input
-                type="text"
-                id="type"
-                placeholder="Pre-professional, Music, etc."
-                className="col-span-3"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="col-span-3">
+                  <Button variant="outline">{type}</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>Choose the type</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                    <DropdownMenuRadioItem value="pre-professional" onClick={() => setType("Pre-professional")}>
+                      Pre-Professional
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="music" onClick={() => setType("Music")}>
+                      Music
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="sports" onClick={() => setType("Sports")}>
+                      Sports
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="other" onClick={() => setType("Other")}>
+                      Other
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="comptype" className="text-right">
-                Type of Comp:
+                Comp Type
               </Label>
-              <Input
-                type="text"
-                id="comptype"
-                placeholder="Competitive, Completion, etc."
-                className="col-span-3"
-                value={comptype}
-                onChange={(e) => setComptype(e.target.value)}
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="col-span-3">
+                  <Button variant="outline">{comptype}</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>Choose the comp type</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                    <DropdownMenuRadioItem value="Competitive" onClick={() => setComptype("Competitive")}>
+                      Competitive{" "}
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="completion" onClick={() => setComptype("Completion")}>
+                      Completion
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="none" onClick={() => setComptype("None")}>
+                      None
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="meetingday" className="text-right">
-                Meeting Day:
+                Meeting Day
               </Label>
-              <Input
-                type="text"
-                id="meetingday"
-                placeholder="Monday, Tuesday, etc."
-                className="col-span-3"
-                value={meetingday}
-                onChange={(e) => setMeetingday(e.target.value)}
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="col-span-3">
+                  <Button variant="outline">{meetingday}</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>Choose a day</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                    <DropdownMenuRadioItem value="sun" onClick={() => setMeetingday("Sunday")}>
+                      Sunday{" "}
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="mon" onClick={() => setMeetingday("Monday")}>
+                      Monday
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="tues" onClick={() => setMeetingday("Tuesday")}>
+                      Tuesday
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="wed" onClick={() => setMeetingday("Wednesday")}>
+                      Wednesday
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="thu" onClick={() => setMeetingday("Thursday")}>
+                      Thursday
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="fri" onClick={() => setMeetingday("Friday")}>
+                      Friday
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="sat" onClick={() => setMeetingday("Saturday")}>
+                      Saturday
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="tbd" onClick={() => setMeetingday("Tbd")}>
+                      Tbd
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="meetingday" className="text-right">
+              <Label htmlFor="meetingtime" className="text-right">
                 Meeting Time:
               </Label>
               <Input
@@ -175,6 +268,13 @@ export default function AddOrgDialog() {
           </div>
 
           <DialogFooter>
+            {/* stretch goal??? */}
+            <DialogTrigger>
+              <Button type="button" onClick={(e) => void handleReset(e)}>
+                Clear
+              </Button>
+            </DialogTrigger>
+
             <DialogClose asChild>
               <Button type="submit">Add organization</Button>
             </DialogClose>
