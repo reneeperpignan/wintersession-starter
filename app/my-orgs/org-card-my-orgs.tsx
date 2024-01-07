@@ -40,7 +40,7 @@ export default function OrgCardMyOrgs({ organization, user }: OrgCardMyOrgsProps
     const docRef = doc(db, "organizations", organization.id);
 
     await updateDoc(docRef, {
-      members: arrayRemove(user.userid),
+      members: arrayRemove(user.uid),
     });
 
     toast({

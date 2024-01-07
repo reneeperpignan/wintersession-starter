@@ -21,11 +21,9 @@ export default function Dashboard() {
     <div>
       <TypographyH1>Your Organizations and Clubs</TypographyH1>
       <MyOrgs
-        userid={user.uid}
         uid={user.uid}
         username={user.displayName}
-        email={user.email}
-        //all things we don't need rn
+        email={user.email} //all things we don't need rn
         displayName={null}
         phoneNumber={null}
         photoURL={null}
