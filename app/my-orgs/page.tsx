@@ -22,9 +22,8 @@ export default function Dashboard() {
       <TypographyH1>Your Organizations and Clubs</TypographyH1>
       <MyOrgs
         uid={user.uid}
-        username={user.displayName}
+        displayName={user.displayName}
         email={user.email} //all things we don't need rn
-        displayName={null}
         phoneNumber={null}
         photoURL={null}
         providerId=""
