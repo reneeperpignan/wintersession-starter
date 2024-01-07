@@ -9,6 +9,7 @@ import OrgCard from "./org-card";
 export default function RenderOrgs(userid: UserInfo) {
   const [orgData, setOrgData] = useState<Orgs[]>([]);
 
+  console.log("user is", userid);
   // const { profile } = useAuthContext();
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function RenderOrgs(userid: UserInfo) {
     <div className="flex h-screen w-screen flex-wrap items-center justify-center">
       {orgData.map((organization: Orgs) => (
         <div key={organization.id}>
-          <OrgCard orgid={organization.id} user={userid} organization={organization} />
+          <OrgCard orgid={organization.id} uid={userid.uid} organization={organization} />
         </div>
       ))}
     </div>

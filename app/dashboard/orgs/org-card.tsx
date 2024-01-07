@@ -4,17 +4,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast";
 import { db } from "@/lib/firebase/firestore";
 import { type Orgs } from "@/lib/firebase/schema";
-import { type UserInfo } from "firebase/auth";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import OrgDetailsDialog from "./org-details-dialog";
 
 interface OrgCardProps {
   organization: Orgs;
-  user: UserInfo;
+  uid: string;
   orgid: string;
 }
-export default function OrgCard({ organization, user, orgid }: OrgCardProps) {
+export default function OrgCard({ organization, uid, orgid }: OrgCardProps) {
   // const { user, profile } = useAuthContext();
   // console.log(profile);
   const { toast } = useToast();
@@ -33,8 +32,11 @@ export default function OrgCard({ organization, user, orgid }: OrgCardProps) {
 
     const docRef = doc(db, "organizations", orgid);
 
+    //user.uid is nothing...??
+    console.log("user is", uid);
+
     await updateDoc(docRef, {
-      members: arrayUnion(user.userid),
+      members: arrayUnion(uid),
     });
 
     toast({
