@@ -15,7 +15,7 @@ export default function MyOrgs(userid: UserInfo) {
   console.log("userid", userid.uid);
   // console.log("uid", userid.uid); this is undefined
 
-  console.log("userName", userid.username);
+  console.log("userName", userid.displayName);
   console.log("email", userid.email);
   //here
   const [orgData, setOrgData] = useState<Orgs[]>([]);
@@ -47,7 +47,7 @@ export default function MyOrgs(userid: UserInfo) {
 
   return (
     <div>
-      <div> {userid.username && <TypographyP>{`Name: ${userid.username}`}</TypographyP>}</div>
+      <div> {userid.displayName && <TypographyP>{`Name: ${userid.displayName}`}</TypographyP>}</div>
       <div>{user.email && <TypographyP>{`Email: ${user.email}`}</TypographyP>}</div>
       <div className="flex w-screen flex-wrap items-center justify-center">
         {orgData.map((organization: Orgs) => (
