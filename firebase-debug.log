@@ -1,0 +1,70 @@
+[debug] [2024-01-07T18:53:29.884Z] ----------------------------------------------------------------------
+[debug] [2024-01-07T18:53:29.885Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy -m Deploying wintersession-starter.
+[debug] [2024-01-07T18:53:29.886Z] CLI Version:   13.0.2
+[debug] [2024-01-07T18:53:29.886Z] Platform:      darwin
+[debug] [2024-01-07T18:53:29.886Z] Node Version:  v18.18.2
+[debug] [2024-01-07T18:53:29.887Z] Time:          Sun Jan 07 2024 13:53:29 GMT-0500 (Eastern Standard Time)
+[debug] [2024-01-07T18:53:29.887Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-07T18:53:29.927Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-07T18:53:29.928Z] > authorizing via signed-in user (reneeperpignan3@gmail.com)
+[debug] [2024-01-07T18:53:29.928Z] [iam] checking project wintersession-starter for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2024-01-07T18:53:29.929Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wintersession-starter:testIamPermissions [none]
+[debug] [2024-01-07T18:53:29.929Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/wintersession-starter:testIamPermissions x-goog-quota-user=projects/wintersession-starter
+[debug] [2024-01-07T18:53:29.929Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wintersession-starter:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2024-01-07T18:53:30.120Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wintersession-starter:testIamPermissions 200
+[debug] [2024-01-07T18:53:30.120Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wintersession-starter:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2024-01-07T18:53:30.121Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter [none]
+[debug] [2024-01-07T18:53:30.408Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter 200
+[debug] [2024-01-07T18:53:30.408Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter {"projectId":"wintersession-starter","projectNumber":"1053642693242","displayName":"wintersession-starter","name":"projects/wintersession-starter","resources":{"hostingSite":"wintersession-starter","realtimeDatabaseInstance":"wintersession-starter-default-rtdb"},"state":"ACTIVE","etag":"1_031d74b5-7c30-48c4-add4-6a346d6ec194"}
+[debug] [2024-01-07T18:53:30.409Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter [none]
+[debug] [2024-01-07T18:53:30.584Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter 200
+[debug] [2024-01-07T18:53:30.585Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter {"projectId":"wintersession-starter","projectNumber":"1053642693242","displayName":"wintersession-starter","name":"projects/wintersession-starter","resources":{"hostingSite":"wintersession-starter","realtimeDatabaseInstance":"wintersession-starter-default-rtdb"},"state":"ACTIVE","etag":"1_031d74b5-7c30-48c4-add4-6a346d6ec194"}
+[debug] [2024-01-07T18:53:31.712Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites pageToken=&pageSize=10
+[debug] [2024-01-07T18:53:32.200Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites 200
+[debug] [2024-01-07T18:53:32.200Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites {"sites":[{"name":"projects/wintersession-starter/sites/wintersession-starter","defaultUrl":"https://wintersession-starter.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-07T18:53:32.202Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites 
+[debug] [2024-01-07T18:53:32.497Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites 200
+[debug] [2024-01-07T18:53:32.497Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites {"sites":[{"name":"projects/wintersession-starter/sites/wintersession-starter","defaultUrl":"https://wintersession-starter.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-07T18:53:32.498Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter/webApps/-/config [none]
+[debug] [2024-01-07T18:53:32.776Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter/webApps/-/config 200
+[debug] [2024-01-07T18:53:32.776Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wintersession-starter/webApps/-/config {"projectId":"wintersession-starter","appId":"1:1053642693242:web:03c8c43ac1121b6fb639c3","databaseURL":"https://wintersession-starter-default-rtdb.firebaseio.com","storageBucket":"wintersession-starter.appspot.com","apiKey":"AIzaSyACpOXabsovDTPhAuYALVtB5hW5DcbT490","authDomain":"wintersession-starter.firebaseapp.com","messagingSenderId":"1053642693242"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-07T18:53:35.079Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites/wintersession-starter [none]
+[debug] [2024-01-07T18:53:35.625Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites/wintersession-starter 200
+[debug] [2024-01-07T18:53:35.625Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/wintersession-starter/sites/wintersession-starter {"name":"projects/wintersession-starter/sites/wintersession-starter","defaultUrl":"https://wintersession-starter.web.app","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.0.4
+
+[info]    - Environments: .env
+
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] Failed to compile.
+
+
+[info] app/dashboard/orgs/page.tsx
+Type error: Page "app/dashboard/orgs/page.tsx" has an invalid "default" export:
+  Type "UserInfo" is not valid.
+
+
+[debug] [2024-01-07T18:53:46.762Z] Error: Invalid environment variables
+    at m (file:///Users/reneeperpignan/Desktop/okay/t4sg/wintersession/wintersession-starter/node_modules/@t3-oss/env-nextjs/dist/index.mjs:1:585)
+    at f (file:///Users/reneeperpignan/Desktop/okay/t4sg/wintersession/wintersession-starter/node_modules/@t3-oss/env-nextjs/dist/index.mjs:1:775)
+    at P (file:///Users/reneeperpignan/Desktop/okay/t4sg/wintersession/wintersession-starter/node_modules/@t3-oss/env-nextjs/dist/index.mjs:1:1174)
+    at file:///Users/reneeperpignan/Desktop/okay/t4sg/wintersession/wintersession-starter/env.mjs:4:20
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -6,7 +6,7 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import OrgCard from "./org-card";
 
-export default function Page(userid: UserInfo) {
+export default function RenderOrgs(userid: UserInfo) {
   const [orgData, setOrgData] = useState<Orgs[]>([]);
 
   // const { profile } = useAuthContext();
