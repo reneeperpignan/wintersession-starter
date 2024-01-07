@@ -16,7 +16,8 @@ export interface Orgs {
   members: string[]; // Every string must be a user id in profiles
   type: string; // pre-professional, journalism, etc
   comptype: string; // three options: no comp, competitive comp, completion-based comp
-  meetingdaytime: string; //should I separate these?
+  meetingday: string; //should I separate these?
+  meetingtime: string;
 }
 
 //list all mebers in the club

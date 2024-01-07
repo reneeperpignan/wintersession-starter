@@ -4,6 +4,8 @@ import { type Profile } from "./schema";
 
 export const db = getFirestore(firebase_app);
 
+// const orgRef = collection
+
 export async function addNewProfile(profile: Profile) {
   // Variable to store the result of the operation
   const result = null;

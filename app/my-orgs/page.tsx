@@ -1,8 +1,8 @@
 "use client";
-import { TypographyH2, TypographyP } from "@/components/ui/typography";
+import { TypographyH1, TypographyP } from "@/components/ui/typography";
 import { redirect } from "next/navigation";
 import { useAuthContext } from "../(context)/auth-context";
-import AddOrgDialog from "../orgs/add-org-dialog";
+import MyOrgs from "./my-orgs";
 
 export default function Dashboard() {
   const { user } = useAuthContext();
@@ -17,12 +17,19 @@ export default function Dashboard() {
   }
 
   return (
-    <>
-      <TypographyH2>Organizations and Clubs at Harvard</TypographyH2>
-      <TypographyP>This is a protected route accessible only to signed-in users.</TypographyP>
-      {user.email && <TypographyP>{`Your email is ${user.email}`}</TypographyP>}
-
-      <AddOrgDialog />
-    </>
+    <div>
+      <TypographyH1>Your Organizations and Clubs</TypographyH1>
+      <MyOrgs
+        userid={user.uid}
+        username={user.displayName}
+        email={user.email}
+        //all things we don't need rn
+        displayName={null}
+        phoneNumber={null}
+        photoURL={null}
+        providerId=""
+        uid=""
+      />
+    </div>
   );
 }
