@@ -15,12 +15,14 @@ export default function Dashboard() {
   if (user === "loading") {
     return <TypographyP>Loading...</TypographyP>;
   }
+  console.log("from dashboard", user.uid);
 
   return (
     <div>
       <TypographyH1>Your Organizations and Clubs</TypographyH1>
       <MyOrgs
         userid={user.uid}
+        uid={user.uid}
         username={user.displayName}
         email={user.email}
         //all things we don't need rn
@@ -28,7 +30,6 @@ export default function Dashboard() {
         phoneNumber={null}
         photoURL={null}
         providerId=""
-        uid=""
       />
     </div>
   );

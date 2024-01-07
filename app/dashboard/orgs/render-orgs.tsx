@@ -6,10 +6,10 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import OrgCard from "./org-card";
 
-export default function RenderOrgs(userid: UserInfo) {
+export default function RenderOrgs(uid: UserInfo) {
   const [orgData, setOrgData] = useState<Orgs[]>([]);
 
-  console.log("user is", userid);
+  console.log("user is renfer orgs", uid);
   // const { profile } = useAuthContext();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function RenderOrgs(userid: UserInfo) {
     <div className="flex h-screen w-screen flex-wrap items-center justify-center">
       {orgData.map((organization: Orgs) => (
         <div key={organization.id}>
-          <OrgCard orgid={organization.id} uid={userid.uid} organization={organization} />
+          <OrgCard orgid={organization.id} uid={uid.uid} organization={organization} />
         </div>
       ))}
     </div>

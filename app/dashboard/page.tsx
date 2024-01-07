@@ -30,14 +30,13 @@ export default function Dashboard() {
       )}
 
       <RenderOrgs
-        userid={user.uid}
+        uid={user.uid}
         username={user.displayName}
         email={user.email} //all things we don't need rn
         displayName={null}
         phoneNumber={null}
         photoURL={null}
         providerId=""
-        uid=""
       />
     </>
   );

@@ -12,7 +12,7 @@ import OrgCardMyOrgs from "./org-card-my-orgs";
 export default function MyOrgs(userid: UserInfo) {
   const { user } = useAuthContext();
   console.log("!user: ", userid);
-  console.log("userid", userid.userid);
+  console.log("userid", userid.uid);
   // console.log("uid", userid.uid); this is undefined
 
   console.log("userName", userid.username);
@@ -21,7 +21,7 @@ export default function MyOrgs(userid: UserInfo) {
   const [orgData, setOrgData] = useState<Orgs[]>([]);
 
   useEffect(() => {
-    const q = query(collection(db, "organizations"), where("members", "array-contains", userid.userid));
+    const q = query(collection(db, "organizations"), where("members", "array-contains", userid.uid));
 
     const unsub = onSnapshot(q, (snapshot) => {
       const orgList: Orgs[] = snapshot.docs.map(
@@ -34,7 +34,7 @@ export default function MyOrgs(userid: UserInfo) {
       setOrgData(orgList);
     });
     return unsub;
-  }, [userid.userid]);
+  }, [userid]);
 
   if (!user) {
     // this is a protected route - only users who are signed in can view this route
